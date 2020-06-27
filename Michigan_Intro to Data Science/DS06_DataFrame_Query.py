@@ -1,0 +1,17 @@
+import pandas as pd
+import numpy as np
+purchase_1 = pd.Series({'Name': 'Chris', 'Item Purchased': 'Dog Food', 'Cost': 22.50})
+purchase_2 = pd.Series({'Name': 'Kevyn', 'Item Purchased': 'Kitty Litter', 'Cost': 2.50})
+purchase_3 = pd.Series({'Name': 'Vinod', 'Item Purchased': 'Bird Seed', 'Cost': 5.00})
+purchase_4 = pd.Series({'Name': 'Mary', 'Item Purchased': 'Cat Food', 'Cost': 16.00})
+purchase_5 = pd.Series({'Name': 'Jules', 'Item Purchased': 'Fish Food', 'Cost': 12.50})
+purchase_6 = pd.Series({'Name': 'Manuel', 'Item Purchased': 'Pumice Dust', 'Cost': 28.00})
+df = pd.DataFrame([purchase_1, purchase_2, purchase_3, purchase_4, purchase_5, purchase_6], index=['Store 1', 'Store 1', 'Store 2', 'Store 3', 'Store 4', 'Store 4'])
+print(df)
+print()
+df_mask = (df['Cost'] > 6) & ((df['Item Purchased'] == 'Dog Food') | (df['Item Purchased'] == 'Cat Food') | (df['Item Purchased'] == 'Fish Food'))
+print(df_mask)
+print()
+cost_df = df.where(df_mask)
+cost_df = cost_df.dropna()
+print(cost_df)
