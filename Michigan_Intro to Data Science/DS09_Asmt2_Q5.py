@@ -8,7 +8,7 @@ columns_to_keep = ['SUMLEV', 'STNAME', 'CTYNAME']
 df = census_df[columns_to_keep]
 states = df[df['SUMLEV'] == 40]
 state_list = pd.Series(states['STNAME'])
-all_states = pd.Series({})
+all_states = pd.Series({}, dtype='float')
 for state in state_list:
     counties = df[df['STNAME'] == state]
     county_total = len(counties.index) - 1

@@ -25,9 +25,6 @@ df = df.drop('Totals')
 
 summer_gold = pd.Series(df['Gold'])
 winter_gold = pd.Series(df['Gold.1'])
-#new_df = pd.DataFrame([summer_gold, winter_gold, (summer_gold - winter_gold)], index=['Sum_Gold', 'Win_Gold', 'Difference']).T
-#new_df = pd.Series(new_df).sort_values('Difference')
-#print(new_df)
 gold_diff = summer_gold - winter_gold
 gold_diff = gold_diff.sort_values()
 last = gold_diff.size - 1
@@ -41,4 +38,4 @@ if first_value > last_value:
 else:
     largest_diff_country = gold_diff.index[last]
     largest_diff_medals = gold_diff.values[last]
-print('The country with the biggest different between summer and winter gold medal counts is:', largest_diff_country, 'with', largest_diff_medals)
+print('The country with the biggest difference between summer and winter gold medal counts is:', largest_diff_country, 'with', largest_diff_medals)
